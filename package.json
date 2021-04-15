@@ -1,0 +1,17 @@
+{
+  "name": "fudge",
+  "version": "0.9.0",
+  "description": "Fudge advanced dropdown with tag support",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "fudge",
+    "dropdown",
+    "tags",
+    "filter"
+  ],
+  "author": "Simon Katz",
+  "license": "ISC"
+}

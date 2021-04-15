@@ -56,10 +56,27 @@ View demo and different usage examples: https://www.fudge.webengineer.co.za
       - See comments in /src/Fudge.vue & /demo/vue.html for more details
     - You can use the same data attributes to apply options
 
+            <template>
+                <div>
+                    <fudge fudge-class="form-control" options="::Please Select,1::One,Two,Three" data-add="true" v-model="fudgeValue"></fudge>
+                </div>
+            </template>
 
-    import Fudge from './Fudge.vue'
+            <script>
+                import Fudge from './Fudge.vue'
+                export default {
+                    name: 'App',
+                    components: {
+                        Fudge
+                    },
+                    data: function () {
+                        return {
+                            fudgeValue: ""
+                        }
+                    }
+                }
+            </script>
 
-    <fudge fudge-class="form-control" options="::Please Select,1::One,Two,Three" data-add="true" v-model="fudgeValue"></fudge>
 
 - *Adjust paths to correspond to your requirements, if needed*
 
@@ -76,13 +93,13 @@ See [Demo](https://fudge.webengineer.co.za) for examples
 
 Option | Default | Type | Explanation 
 ------ | ------- | ----- | --- |
-options | [] | array or string | Allows you to specify the options in different ways, if they are not obtained from the target select options.<br />Examples:<br />[{value:"1",text:"One"},{value:"2"},{value:"Three"}]<br />["1", "2", "Three"]<br />"1::One,2,Three"<br />These are equivalent to:<br />&lt;select&gt;<br />&lt;option value="1"&gt;One&lt;/option&gt;<br />&lt;option value="2"&gt;2&lt;/option&gt;<br />&lt;option value="Three"&gt;Three&lt;/option&gt;<br />&lt;/select&gt;
+options | [] | array or string | Allows you to specify the options in different ways, if they are not obtained from the target select options.<br /><br />Examples:<br />[{value:"1",text:"One"},{value:"2"},{value:"Three"}]<br />["1", "2", "Three"]<br />"1::One,2,Three"<br /><br />These are equivalent to:<br />&lt;select&gt;<br />&lt;option value="1"&gt;One&lt;/option&gt;<br />&lt;option value="2"&gt;2&lt;/option&gt;<br />&lt;option value="Three"&gt;Three&lt;/option&gt;<br />&lt;/select&gt;
 mode | select | "tags" or "select" | Specify if the plugin is in select mode (Enhanced select element)<br />or tag mode where you can select multiple tags
 add | false | boolean | Allow new options to be added
 tagLimit | -1 | integer | You can specify the number of selectable tags.<br />-1 means there is no limit
 closeOnTagLimit | true | boolean | If true, the dropdown will close when the tagLimit has been reached
-glue | "," | string | "One,Two,Three"
-glueOption | "::" | string | "1::One,2::Two,3::Three"
+glue | "," | string | The character to separate the different options<br />"One,Two,Three"
+glueOption | "::" | string | The character to separate the value and text in an option<br />"1::One,2::Two,3::Three"
 glueEnd | true | boolean | Append the glue to the end of the tag list output <br /> Useful to explicitly denote the end of a tag with similar substrings <br /> Example output: One,Two One,
 msgNoResults | "No Matching Results" | string | The message to display when there are no matching options
 theme | "" | string | Apply a theme to the plugin.<br />Basically equivalent to adding additional classes to the target class
@@ -166,24 +183,24 @@ iconRemove | FA times | svg string | The icon on the right of a tag to denote th
 - Start HMR development build (serve)
 
 
-    npm run start  
+        npm run start  
 
 - Build native minified and unminified assets with source maps (minifiedJs, unminifiedCss, minifiedCssAndUnminifiedJs)
 
 
-    npm run build
+        npm run build
 
 
 - Build bundle (bundle)
 
 
-    npm run bundle
+        npm run bundle
 
-    # Or development mode bundle
-    npm run bundle:dev
+        # Or development mode bundle
+        npm run bundle:dev
 
 - Just build the styles (styles)
 
 
-    npm run styles
+        npm run styles
 

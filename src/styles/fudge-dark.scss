@@ -1,0 +1,19 @@
+/*
+An example Dark Mode from CSS variables
+ */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --fudge-primary: #3472f7;
+        --fudge-primary-text: #fff;
+        --fudge-primary-dark: #0954f4;
+        --fudge-placeholder: #ccc;
+        --fudge-background: #343a40;
+        --fudge-text: #fff;
+        --fudge-tag-text: #fff;
+        --fudge-highlight-background: #6c757d;
+        --fudge-highlight-text: #fff;
+        --fudge-glow-background: #ff0;
+        --fudge-glow-text: #000;
+        --fudge-gray: #ced4da;
+    }
+}

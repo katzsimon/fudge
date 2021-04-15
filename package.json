@@ -6,9 +6,13 @@
   "scripts": {
     "build": "webpack",
     "start": "webpack serve --env env=serve",
+    "styles": "webpack --env env=styles",
+    "bundle": "webpack --env env=bundle",
+    "bundle:dev": "webpack --env env=bundle --mode=development",
     "test": "jest",
     "pretty:lint": "npx prettier src/*.js --write && eslint src/*.js --fix",
-    "pretty:lint:all": "npx prettier src/*.js --write && npx prettier tests/*.js --write && npx prettier *.js --write && eslint src/*.js --fix && eslint tests/*.js --fix && eslint *.js --fix"
+    "pretty:lint:all": "npx prettier src/*.js --write && npx prettier tests/*.js --write && npx prettier *.js --write && eslint src/*.js --fix && eslint tests/*.js --fix && eslint *.js --fix",
+    "prod": "npm run pretty:lint && npm run test && npm run build"
   },
   "keywords": [
     "fudge",

@@ -1,0 +1,79 @@
+/*
+An example Dark Mode theme
+ */
+$primary: #3472f7; // CSS Variable: --fudge-primary
+$primaryText: #fff; // CSS Variable: --fudge-primary-text
+$primaryDark: darken($primary, 15); // CSS Variable: --fudge-primary-dark
+$placeholder: #6c757d; // CSS Variable: --fudge-placeholder
+$background: #343a40; // CSS Variable: --fudge-background
+$text: #fff; // CSS Variable: --fudge-text
+$tagText: #fff; // CSS Variable: --fudge-tag-text
+$highlightBackground: #6c757d; // CSS Variable: --fudge-highlight-background
+$highlightText: #fff; // CSS Variable: --fudge-highlight-text
+$glowBackground: #ff0; // CSS Variable: --fudge-glow-background
+$glowText: #000; // CSS Variable: --fudge-glow-text
+$gray: #ced4da; // CSS Variable: --fudge-gray
+
+.fudge.dark {
+    .fudge-display {
+        background: $background;
+
+        .fudge-selected {
+            color: $primaryText;
+        }
+        .fudge-openclose {
+            background: $background;
+            svg {
+                fill: $text;
+            }
+        }
+        .fudge-placeholder {
+            color: $placeholder;
+        }
+    }
+
+    .fudge-dropdown {
+        border: 1px solid $text;
+        background: $background;
+    }
+
+    .fudge-input {
+        border: 1px solid $gray;
+
+        .fudge-input-icon {
+            svg {
+                fill: $text;
+            }
+        }
+
+    }
+
+    .fudge-option {
+        color: $text;
+        &.fudge-highlight {
+            background-color: $highlightBackground;
+            color: $highlightText;
+        }
+    }
+
+    .fudge-tag {
+        border: 1px solid $primaryDark;
+
+        .fudge-tag-text {
+            background: $primary;
+            color: $tagText;
+        }
+        .fudge-tag-remove {
+            background: $primaryDark;
+
+            svg {
+                fill: $tagText;
+            }
+        }
+    }
+
+    .fudge-glow {
+        background-color: $glowBackground;
+        color: $glowText;
+    }
+}

@@ -1,0 +1,9 @@
+.fudge {
+    &.firefox {
+        .fudge-openclose {
+            // A gray background for the dropdown icon to look more similar to Firefox native select element
+            background: #dee2e6;
+            border:1px solid #adb5bd;
+        }
+    }
+}

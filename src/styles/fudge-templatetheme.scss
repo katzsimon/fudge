@@ -1,0 +1,119 @@
+/*
+This is a template for creating a theme
+
+Below are the different possible fudge classes that you can style.
+(See fudge.scss for all the base styles)
+
+You can use Sass variables or CSS variables to specify the colors as desired
+(Uncomment/set/use the relevant ones)
+
+ */
+
+$primary: #3472f7; // CSS Variable: --fudge-primary
+$primaryText: #000; // CSS Variable: --fudge-primary-text
+$primaryDark: darken($primary, 15); // CSS Variable: --fudge-primary-dark
+$placeholder: #6c757d; // CSS Variable: --fudge-placeholder
+$background: #fff; // CSS Variable: --fudge-background
+$text: #000; // CSS Variable: --fudge-text
+$tagText: #fff; // CSS Variable: --fudge-tag-text
+$highlightBackground: #e9ecef; // CSS Variable: --fudge-highlight-background
+$highlightText: #000; // CSS Variable: --fudge-highlight-text
+$glowBackground: #ff0; // CSS Variable: --fudge-glow-background
+$glowText: #000; // CSS Variable: --fudge-glow-text
+$gray: #ced4da; // CSS Variable: --fudge-gray
+
+/*
+CSS Variables
+:root {
+    --fudge-primary: #3472f7;
+    --fudge-primary-text: #fff;
+    --fudge-primary-dark: #0954f4;
+    --fudge-placeholder: #6c757d;
+    --fudge-background: #fff;
+    --fudge-text: #000;
+    --fudge-tag-text: #fff;
+    --fudge-highlight-background: #e9ecef;
+    --fudge-highlight-text: #fff;
+    --fudge-glow-background: ff0;
+    --fudge-glow-text: #000;
+    --fudge-gray: #ced4da;
+}
+ */
+
+.fudge {
+
+    .fudge-display {
+        background: var(--fudge-background, $background);
+
+        .fudge-selected {
+            // Uncomment the line below to override the default text color
+            // color: var(--fudge-primary-text, $primaryText);
+        }
+        .fudge-openclose {
+            // Uncomment the line beloe to override the default openclose background
+            // background: var(--fudge-background, $background);
+            svg {
+                fill: var(--fudge-text, $text);
+            }
+        }
+        .fudge-placeholder {
+            color:var(--fudge-placeholder, $placeholder);
+        }
+    }
+
+    .fudge-dropdown {
+        border: 1px solid var(--fudge-color, $text);
+        background: var(--fudge-background, $background);
+    }
+
+    .fudge-input {
+        border: 1px solid var(--fudge-gray, $gray);
+
+        .fudge-input-icon {
+            svg {
+                fill: var(--fudge-text, $text);
+            }
+        }
+
+        input {
+        }
+    }
+    .fudge-options {
+    }
+
+    .fudge-option {
+        color: var(--fudge-text, $text);
+        &.fudge-highlight {
+            background-color: var(--fudge-highlight-background, $highlightBackground);
+            color: var(--fudge-highlight-text, $highlightText);
+        }
+    }
+
+    .fudge-tag {
+        border: 1px solid var(--fudge-primary-dark, $primaryDark);
+
+        .fudge-tag-text {
+            background: var( --fudge-primary, $primary);
+            color: var(--fudge-tag-text, $tagText);
+        }
+        .fudge-tag-remove {
+            background: var(--fudge-primary-dark, $primaryDark);
+
+            svg {
+                fill: var(--fudge-tag-text, $tagText);
+            }
+        }
+    }
+
+    .fudge-hidden {
+    }
+    .fudge-glow {
+        background-color: var(--fudge-glow-background, $glowBackground);
+        color: var(--fudge-glow-text, $glowText);
+    }
+    .fudge-no-items {
+    }
+    .fudge-add {
+    }
+
+}

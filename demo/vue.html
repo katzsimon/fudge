@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Fudge - Vue</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../dist/fudge.css">
+    <script src="../dist/fudge.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+
+                <div id="app">
+                    <h1>{{ title }}</h1>
+                    <fudge fudge-class="form-control" options="::Please Select,1::One,Two,Three" data-add="true" v-model="fudgeValue"></fudge>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <pre class="alert alert-secondary">
+&lt;template&gt;
+    &lt;div&gt;
+        &lt;fudge fudge-class="form-control" options="::Please Select,1::One,Two,Three" data-add="true" v-model="fudgeValue"&gt;&lt;/fudge&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+    import Fudge from './Fudge.vue'
+
+    export default {
+        name: 'App',
+        components: {
+            Fudge
+        },
+        data: function () {
+            return {
+                fudgeValue: ""
+            }
+        }
+    }
+&lt;/script&gt;
+                </pre>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        /*
+        This setup is not ideal but it is something workable outside of a full Vue installation
+
+        Rather see/use the Single File Vue component in /src/Fudge.vue
+         */
+        Vue.component('fudge', {
+            data: function () {
+                return {
+                }
+            },
+            props: {
+                value: String,
+                fudgeClass: {type:String, default:''},
+                options: {type:String, default:''},
+            },
+            mounted: function(){
+                new window.Fudge.default(this.$refs.target, {options:this.options});
+            },
+            methods: {
+                onInput: function() {
+                    this.$emit('input', this.$refs.target.value);
+                }
+            },
+            template: `<div>
+            <input type="text" ref="target" v-bind="$attrs" @input="onInput" :value="value" :class="fudgeClass">
+            </div>`
+        });
+
+        var app = new Vue({
+            el: "#app",
+            data() {
+                return {
+                    title: 'Fudge - Vue',
+                    fudgeValue: '',
+                };
+            },
+        });
+    </script>
+</body>
+</html>

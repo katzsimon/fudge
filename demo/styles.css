@@ -1,0 +1,26 @@
+/* Custom Demo Styles */
+h1 {
+	text-decoration: underline;
+	margin-bottom:30px;
+}
+.container {
+	padding:15px;
+}
+.example {
+	margin-bottom:50px;
+}
+pre {
+	margin-top:15px;
+}
+body {
+	padding-bottom:200px;
+}
+.list-group-item a {
+	font-weight:bold;
+}
+
+/* Fudge Dark Theme */
+.fudge.dark .fudge-display{background:#343a40}.fudge.dark .fudge-display .fudge-selected{color:#fff}.fudge.dark .fudge-display .fudge-openclose{background:#343a40}.fudge.dark .fudge-display .fudge-openclose svg{fill:#fff}.fudge.dark .fudge-display .fudge-placeholder{color:#6c757d}.fudge.dark .fudge-dropdown{border:1px solid #fff;background:#343a40}.fudge.dark .fudge-input{border:1px solid #ced4da}.fudge.dark .fudge-input .fudge-input-icon svg{fill:#fff}.fudge.dark .fudge-option{color:#fff}.fudge.dark .fudge-option.fudge-highlight{background-color:#6c757d;color:#fff}.fudge.dark .fudge-tag{border:1px solid #084ad6}.fudge.dark .fudge-tag .fudge-tag-text{background:#3472f7;color:#fff}.fudge.dark .fudge-tag .fudge-tag-remove{background:#084ad6}.fudge.dark .fudge-tag .fudge-tag-remove svg{fill:#fff}.fudge.dark .fudge-glow{background-color:#ff0;color:#000}
+/* Fudge Firefox Theme */
+.fudge.firefox .fudge-openclose{background:#dee2e6;border:1px solid #adb5bd}
+

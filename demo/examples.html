@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Fudge Options Examples</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no">
+
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="../dist/fudge.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="../dist/fudge.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <p><a href="index.html">Back to Index</a></p>
+
+        <h1>
+            Fudge Options Examples
+        </h1>
+
+        <p>Showcasing the different possible options.<br>
+            They are being set via data attributes for easy demonstration, but can be set with JavaScript as well (See README).</p>
+
+        <div class="row">
+
+            <div class="col-12 example">
+                <h3>Select Search from Select Element</h3>
+                <select class="form-control fudge" placeholder="Placeholder Text">
+                    <option value="">Please Select</option>
+                    <option value="Wishbone">Wishbone</option>
+                    <option value="Ellie">Ellie</option>
+                    <option value="Chico">Chico</option>
+                    <option value="Meisie">Meisie</option>
+                    <option value="Black Meisie">Black Meisie</option>
+                </select>
+
+                <pre class="alert alert-secondary">
+    &lt;select class="form-control fudge"&gt;
+        &lt;option value=""&gt;Please Select&lt;/option&gt;
+        &lt;option value="Wishbone"&gt;Wishbone&lt;/option&gt;
+        &lt;option value="Ellie"&gt;Ellie&lt;/option&gt;
+        &lt;option value="Chico"&gt;Chico&lt;/option&gt;
+        &lt;option value="Meisie"&gt;Meisie&lt;/option&gt;
+        &lt;option value="Black Meisie"&gt;Black Meisie&lt;/option&gt;
+    &lt;/select&gt;</pre
+                >
+            </div>
+
+            <!-- ---------- -->
+
+            <div class="col-12 example">
+                <h3>Select Search from Input Element with JSON options</h3>
+                <input  type="text" class="form-control fudge" value="Fudge"
+                        data-options='[{"value":"","text":"Please Select"},
+                           {"value":"Deaunan","text":"Deaunan"},
+                           {"value":"Fudge","text":"Fudge"},
+                           {"value":"Meisie","text":"Meisie"},
+                           {"value":"Black Meisie","text":"Black Meisie"},
+                           {"text":"Smokey"}]'
+                />
+                <pre class="alert alert-secondary">
+    &lt;input  type="text" class="form-control fudge" value="Fudge"
+            data-options='[
+                {"value":"","text":"Please Select"},
+                {"value":"Deaunan","text":"Deaunan"},
+                {"value":"Fudge","text":"Fudge"},
+                {"value":"Meisie","text":"Meisie"},
+                {"value":"Black Meisie","text":"Black Meisie"},
+                {"text":"Smokey"}]'&gt;</pre>
+            </div>
+
+            <!-- ---------- -->
+
+            <div class="col-12 example">
+                <h3>
+                    Select Search from Input Element with Glued string
+                    options
+                </h3>
+                <input  type="text" class="form-control fudge"
+                        data-options="Afghanistan, Albania, Algeria, Andorra, Angola, Antigua & Deps, Argentina, Armenia, Australia, Austria, Azerbaijan, Bahamas, Bahrain, Bangladesh, Barbados, Belarus, Belgium, Belize, Benin, Bhutan, Bolivia, Bosnia Herzegovina, Botswana, Brazil, Brunei, Bulgaria, Burkina, Burundi, Cambodia, Cameroon, Canada, Cape Verde, Central African Rep, Chad, Chile, China, Colombia, Comoros, Congo, Congo {Democratic Rep}, Costa Rica, Croatia, Cuba, Cyprus, Czech Republic, Denmark, Djibouti, Dominica, Dominican Republic, East Timor, Ecuador, Egypt, El Salvador, Equatorial Guinea, Eritrea, Estonia, Ethiopia, Fiji, Finland, France, Gabon, Gambia, Georgia, Germany, Ghana, Greece, Grenada, Guatemala, Guinea, Guinea-Bissau, Guyana, Haiti, Honduras, Hungary, Iceland, India, Indonesia, Iran, Iraq, Ireland {Republic}, Israel, Italy, Ivory Coast, Jamaica, Japan, Jordan, Kazakhstan, Kenya, Kiribati, Korea North, Korea South, Kosovo, Kuwait, Kyrgyzstan, Laos, Latvia, Lebanon, Lesotho, Liberia, Libya, Liechtenstein, Lithuania, Luxembourg, Macedonia, Madagascar, Malawi, Malaysia, Maldives, Mali, Malta, Marshall Islands, Mauritania, Mauritius, Mexico, Micronesia, Moldova, Monaco, Mongolia, Montenegro, Morocco, Mozambique, Myanmar, {Burma}, Namibia, Nauru, Nepal, Netherlands, New Zealand, Nicaragua, Niger, Nigeria, Norway, Oman, Pakistan, Palau, Panama, Papua New Guinea, Paraguay, Peru, Philippines, Poland, Portugal, Qatar, Romania, Russian Federation, Rwanda, St Kitts & Nevis, St Lucia, Saint Vincent & the Grenadines, Samoa, San Marino, Sao Tome & Principe, Saudi Arabia, Senegal, Serbia, Seychelles, Sierra Leone, Singapore, Slovakia, Slovenia, Solomon Islands, Somalia, South Africa, South Sudan, Spain, Sri Lanka, Sudan, Suriname, Swaziland, Sweden, Switzerland, Syria, Taiwan, Tajikistan, Tanzania, Thailand, Togo, Tonga, Trinidad & Tobago, Tunisia, Turkey, Turkmenistan, Tuvalu, Uganda, Ukraine, United Arab Emirates, United Kingdom, United States, Uruguay, Uzbekistan, Vanuatu, Vatican City, Venezuela, Vietnam, Yemen, Zambia, Zimbabwe"
+                />
+                <pre class="alert alert-secondary">
+    &lt;input type="text" class="form-control fudge"
+           data-options="Afghanistan, Albania, Algeria, Andorra, Angola, Antigua & Deps, Argentina, Armenia, Australia, Austria, Azerbaijan, Bahamas, Bahrain, Bangladesh, Barbados, Belarus, Belgium, Belize, Benin, Bhutan, Bolivia, Bosnia Herzegovina, Botswana, Brazil, Brunei, Bulgaria, Burkina, Burundi, Cambodia, Cameroon, Canada, Cape Verde, Central African Rep, Chad, Chile, China, Colombia, Comoros, Congo, Congo {Democratic Rep}, Costa Rica, Croatia, Cuba, Cyprus, Czech Republic, Denmark, Djibouti, Dominica, Dominican Republic, East Timor, Ecuador, Egypt, El Salvador, Equatorial Guinea, Eritrea, Estonia, Ethiopia, Fiji, Finland, France, Gabon, Gambia, Georgia, Germany, Ghana, Greece, Grenada, Guatemala, Guinea, Guinea-Bissau, Guyana, Haiti, Honduras, Hungary, Iceland, India, Indonesia, Iran, Iraq, Ireland {Republic}, Israel, Italy, Ivory Coast, Jamaica, Japan, Jordan, Kazakhstan, Kenya, Kiribati, Korea North, Korea South, Kosovo, Kuwait, Kyrgyzstan, Laos, Latvia, Lebanon, Lesotho, Liberia, Libya, Liechtenstein, Lithuania, Luxembourg, Macedonia, Madagascar, Malawi, Malaysia, Maldives, Mali, Malta, Marshall Islands, Mauritania, Mauritius, Mexico, Micronesia, Moldova, Monaco, Mongolia, Montenegro, Morocco, Mozambique, Myanmar, {Burma}, Namibia, Nauru, Nepal, Netherlands, New Zealand, Nicaragua, Niger, Nigeria, Norway, Oman, Pakistan, Palau, Panama, Papua New Guinea, Paraguay, Peru, Philippines, Poland, Portugal, Qatar, Romania, Russian Federation, Rwanda, St Kitts & Nevis, St Lucia, Saint Vincent & the Grenadines, Samoa, San Marino, Sao Tome & Principe, Saudi Arabia, Senegal, Serbia, Seychelles, Sierra Leone, Singapore, Slovakia, Slovenia, Solomon Islands, Somalia, South Africa, South Sudan, Spain, Sri Lanka, Sudan, Suriname, Swaziland, Sweden, Switzerland, Syria, Taiwan, Tajikistan, Tanzania, Thailand, Togo, Tonga, Trinidad & Tobago, Tunisia, Turkey, Turkmenistan, Tuvalu, Uganda, Ukraine, United Arab Emirates, United Kingdom, United States, Uruguay, Uzbekistan, Vanuatu, Vatican City, Venezuela, Vietnam, Yemen, Zambia, Zimbabwe"&gt;</pre>
+            </div>
+
+            <!-- ---------- -->
+
+            <div class="col-12 example">
+                <h3>Select Add Option from Input Element</h3>
+                <input  type="text"
+                        class="form-control fudge"
+                        data-add="true"
+                        data-options="::Please Select,Deunan::Deaunan,Fudge,Meisie,Black Meisie,Smokey"
+                />
+                <pre class="alert alert-secondary">
+    &lt;input type="text" class="form-control fudge" data-add="true"
+           data-options="::Please Select,Deunan::Deunan,Fudge,Meisie,Black Meisie,Smokey"&gt;</pre
+                >
+           </div>
+
+           <!-- ---------- -->
+
+           <div class="col-12 example">
+               <h3>Select Add Option from Select Element</h3>
+               <h5>with Showing Target/Original Select</h5>
+               <select class="form-control fudge" data-fudge-add="true" data-fudge-show_target="true">
+               <option value="">Please Select</option>
+                   <option value="Wishbone">Wishbone</option>
+                   <option value="Ellie">Ellie</option>
+                   <option value="Chico">Chico</option>
+                   <option value="Meisie">Meisie</option>
+                   <option value="Black Meisie">Black Meisie</option>
+               </select>
+
+                <pre class="alert alert-secondary">
+    &lt;select class="form-control fudge" data-fudge-add="true" data-fudge-show_target="true"&gt;
+        &lt;option value=""&gt;Please Select&lt;/option&gt;
+        &lt;option value="Wishbone"&gt;Wishbone&lt;/option&gt;
+        &lt;option value="Ellie"&gt;Ellie&lt;/option&gt;
+        &lt;option value="Chico"&gt;Chico&lt;/option&gt;
+        &lt;option value="Meisie"&gt;Meisie&lt;/option&gt;
+        &lt;option value="Black Meisie"&gt;Black Meisie&lt;/option&gt;
+    &lt;/select&gt;</pre>
+            </div>
+
+            <!-- ---------- -->
+
+            <div class="col-12 example">
+                <h3>Tags from Input Element</h3>
+                <input  type="text" class="form-control fudge" data-add="true" data-mode="tags"
+                        data-options="Deunan::Deunan,Fudge,Meisie,Black Meisie,Smokey"
+                />
+                <pre class="alert alert-secondary">
+    &lt;input type="text" class="form-control fudge" data-add="true" data-mode="tags"
+           data-options="Deunan::Deunan,Fudge,Meisie,Black Meisie,Smokey"&gt;</pre>
+            </div>
+
+            <!-- ---------- -->
+
+            <div class="col-12 example">
+                <h3>Tags from Input Element with Tag Limit</h3>
+                <input  type="text" class="form-control fudge" data-add="true" data-mode="tags" data-taglimit="2" data-show_target="true"
+                        data-options="Deunan::Deunan Dog,Fudge,Meisie,Black Meisie,Smokey"
+                />
+                <pre class="alert alert-secondary">
+    &lt;input type="text" class="form-control fudge" data-add="true" data-mode="tags" data-taglimit="2"
+           data-options="Deunan::Deunan,Fudge,Meisie,Black Meisie,Smokey"&gt;</pre>
+            </div>
+
+            <!-- ---------- -->
+
+            <div class="col-12 example">
+                <h3>Custom Class, Inline Styles</h3>
+                <input type="text" class="form-control font-bold fudge" style="border: 3px solid #cc0000;background-color: #fee;border-radius: 0;"
+                       data-options="::Please Select,Deaunan,Fudge,Meisie,Black Meisie,Smokey"
+                />
+                <pre class="alert alert-secondary">
+    &lt;input type="text" class="form-control font-bold fudge"
+           style="border:3px solid #cc0000;background-color:#fee;border-radius:0;"
+           data-options="::Please Select,Deunan::Deunan,Fudge,Meisie,Black Meisie,Smokey"&gt;</pre>
+            </div>
+
+            <!-- ---------- -->
+
+            <div class="col-12 example">
+                <h3>Custom Icons</h3>
+                <input  type="text" class="form-control fudge"
+                        data-icon_dropdown='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256,8C119,8,8,119,8,256S119,504,256,504,504,393,504,256,393,8,256,8ZM360.57,319.41l-91.5,91.18a18.41,18.41,0,0,1-26.07,0l-91.57-91.18C139.83,307.85,148,288,164.5,288h183C364,288,372.17,307.85,360.57,319.41ZM347.5,224h-183c-16.46,0-24.67-19.85-13.07-31.42L243,101.41a18.41,18.41,0,0,1,26.07,0l91.5,91.17C372.17,204.15,364,224,347.5,224Z"/></svg>'
+                        data-icon_search='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M512 199.652c0 23.625-20.65 43.826-44.8 43.826h-99.851c16.34 17.048 18.346 49.766-6.299 70.944 14.288 22.829 2.147 53.017-16.45 62.315C353.574 425.878 322.654 448 272 448c-2.746 0-13.276-.203-16-.195-61.971.168-76.894-31.065-123.731-38.315C120.596 407.683 112 397.599 112 385.786V214.261l.002-.001c.011-18.366 10.607-35.889 28.464-43.845 28.886-12.994 95.413-49.038 107.534-77.323 7.797-18.194 21.384-29.084 40-29.092 34.222-.014 57.752 35.098 44.119 66.908-3.583 8.359-8.312 16.67-14.153 24.918H467.2c23.45 0 44.8 20.543 44.8 43.826zM96 200v192c0 13.255-10.745 24-24 24H24c-13.255 0-24-10.745-24-24V200c0-13.255 10.745-24 24-24h48c13.255 0 24 10.745 24 24zM68 368c0-11.046-8.954-20-20-20s-20 8.954-20 20 8.954 20 20 20 20-8.954 20-20z"/></svg>'
+                        data-icon_remove='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M32 464a48 48 0 0 0 48 48h288a48 48 0 0 0 48-48V128H32zm272-256a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zM432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16z"/></svg>'
+                        data-mode="tags"
+                        data-options="Deaunan,Fudge,Meisie,Black Meisie,Smokey"
+                />
+                <pre class="alert alert-secondary">
+    &lt;input type="text" class="form-control font-bold fudge"
+           style="border:3px solid #cc0000;background-color:#fee;border-radius:0;"
+           data-theme="firefox"
+           data-options="Deunan::Deunan,Fudge,Meisie,Black Meisie,Smokey"&gt;</pre>
+            </div>
+
+            <!-- ---------- -->
+
+            <div class="col-12 example">
+                <h3>Themes</h3>
+                <h5>Dark Theme</h5>
+                <input type="text" class="form-control fudge" data-options='::Please Select,Deaunan,Fudge,Meisie,Black Meisie,Smokey' value="Fudge" data-theme="dark">
+                <pre class="alert alert-secondary">
+    &lt;input type="text" class="form-control fudge" value="Fudge" data-theme="dark"
+           data-options='::Please Select,Deaunan,Fudge,Meisie,Black Meisie,Smokey'&gt;</pre>
+
+                <h5>Firefox Theme</h5>
+                <input type="text" class="form-control fudge" data-options='::Please Select,Deaunan,Fudge,Meisie,Black Meisie,Smokey' value="Smokey" data-theme="firefox">
+                <pre class="alert alert-secondary">
+    &lt;input type="text" class="form-control fudge" value="Fudge" data-theme="firefox"
+           data-options='::Please Select,Deaunan,Fudge,Meisie,Black Meisie,Smokey'&gt;</pre>
+            </div>
+
+            <!-- ---------- -->
+
+            <div class="col-12 example">
+                <h3>Tailwind Integration</h3>
+                <input  type="text" class="fudge border border-gray-600 p-2 rounded text-red-500"
+                        data-options="::Please Select,Deunan::Deaunan,Fudge,Meisie,Black Meisie,Smokey"
+                />
+                <pre class="alert alert-secondary">
+    &lt;input type="text" class="fudge border border-gray-600 p-2 rounded text-red-500"
+           data-options="::Please Select,Deunan::Deunan,Fudge,Meisie,Black Meisie,Smokey"&gt;</pre>
+            </div>
+
+        </div>
+    </div>
+
+
+    <script>
+        const fudges = document.querySelectorAll(".fudge");
+        fudges.forEach((item) => {
+            new window.Fudge.default(item, {});
+        });
+    </script>
+
+</body>
+</html>

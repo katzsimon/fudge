@@ -1,0 +1,214 @@
+/*
+Base theme for Fudge dropdowns
+ */
+
+$primary: #3472f7; // CSS Variable: --fudge-primary
+$primaryText: #495057; // CSS Variable: --fudge-primary-text
+$primaryDark: darken($primary, 15); // CSS Variable: --fudge-primary-dark
+$placeholder: #6c757d; // CSS Variable: --fudge-placeholder
+$background: #fff; // CSS Variable: --fudge-background
+$text: #000; // CSS Variable: --fudge-text
+$tagText: #fff; // CSS Variable: --fudge-tag-text
+$highlightBackground: #e9ecef; // CSS Variable: --fudge-highlight-background
+$highlightText: #000; // CSS Variable: --fudge-highlight-text
+$glowBackground: #ff0; // CSS Variable: --fudge-glow-background
+$glowText: #000; // CSS Variable: --fudge-glow-text
+$gray: #ced4da; // CSS Variable: --fudge-gray
+
+/*
+CSS Variables
+:root {
+    --fudge-primary: #3472f7;
+    --fudge-primary-text: #fff;
+    --fudge-primary-dark: #0954f4;
+    --fudge-placeholder: #6c757d;
+    --fudge-background: #fff;
+    --fudge-text: #000;
+    --fudge-tag-text: #fff;
+    --fudge-highlight-background: #e9ecef;
+    --fudge-highlight-text: #fff;
+    --fudge-glow-background: ff0;
+    --fudge-glow-text: #000;
+    --fudge-gray: #ced4da;
+}
+ */
+
+.fudge {
+
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    svg {
+        width: 1rem;
+        height: 1rem;
+    }
+
+    position: relative;
+    width: 100%;
+
+    .fudge-display {
+        // The element visible when the dropdown is closed
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        position: relative;
+        height: auto;
+        background: var(--fudge-background, $background);
+
+        .fudge-selected {
+            // The element showing the current selected option
+            flex-grow: 1;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            user-select: none;
+            width: 160px !important;
+            flex-wrap: wrap;
+            // Comment out the line below to prevent overriding the default text color
+             color: var(--fudge-primary-text, $primaryText);
+        }
+        .fudge-openclose {
+            // The element holding the icon denoting the dropdown can be opened/closed
+            flex-grow: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            // Uncomment the line beloe to override the default openclose background
+            // background: var(--fudge-background, $background);
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+            padding: 2px 2px;
+            z-index: 10;
+            svg {
+                fill: var(--fudge-text, $text);
+            }
+        }
+        .fudge-placeholder {
+            // The element showing the placeholder text
+            color:var(--fudge-placeholder, $placeholder);
+        }
+    }
+
+    .fudge-dropdown {
+        // The element holding the dropdown
+        border: 1px solid var(--fudge-color, $text);
+        width: 100%;
+        background: var(--fudge-background, $background);
+        z-index: 10;
+        position: absolute;
+        left: 0;
+        display: none;
+    }
+
+    .fudge-input {
+        // The element holding the input for filtering or adding options
+        display: flex;
+        flex-direction: row;
+        border: 1px solid var(--fudge-gray, $gray);
+        margin: 3px;
+        padding: 3px;
+
+        .fudge-input-icon {
+            // The element holding the icon to denote filtering or adding options
+            width: 30px;
+            margin-right: 3px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            svg {
+                fill: var(--fudge-text, $text);
+            }
+        }
+
+        input {
+            // The input element that receives key/text events
+            border: 0;
+            flex-grow: 1;
+            padding: 4px 8px;
+        }
+    }
+    .fudge-options {
+        // The element containing the options
+        max-height: 200px;
+        overflow: auto;
+    }
+
+    .fudge-option {
+        // An element holding an option
+        display: flex;
+        width: 100%;
+        padding: 4px 8px;
+        cursor: pointer;
+        user-select: none;
+        color: var(--fudge-text, $text);
+        &.fudge-highlight {
+            // If an option is highlighted/selected
+            background-color: var(--fudge-highlight-background, $highlightBackground);
+            color: var(--fudge-highlight-text, $highlightText);
+        }
+    }
+
+    .fudge-tag {
+        // The element containing a selected tag
+        border-radius: 3px;
+        border: 1px solid var(--fudge-primary-dark, $primaryDark);
+        display: flex;
+        flex-direction: row;
+        position: relative;
+        margin-right: 5px;
+
+        .fudge-tag-text {
+            // The element containing the text of a selected tag
+            font-size: 0.8rem;
+            padding: 2px 4px;
+            background: var( --fudge-primary, $primary);
+            color: var(--fudge-tag-text, $tagText);
+        }
+        .fudge-tag-remove {
+            // The element containing the icon for removing a selected tag
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2px 2px;
+            background: var(--fudge-primary-dark, $primaryDark);
+            cursor: pointer;
+
+            svg {
+                fill: var(--fudge-tag-text, $tagText);
+                width: 0.8rem;
+                height: 0.8rem;
+            }
+        }
+    }
+
+    .fudge-hidden {
+        // Used to hide an element in the plugin
+        display: none !important;
+    }
+    .fudge-glow {
+        // The inline element that denotes the matching filtered text for an option
+        background-color: var(--fudge-glow-background, $glowBackground);
+        color: var(--fudge-glow-text, $glowText);
+    }
+    .fudge-bold {
+        // Bold text
+        font-weight: bold;
+    }
+    .fudge-add {
+        // The element containing the text to be added as a new option
+        margin-left: 10px;
+    }
+
+    &.open {
+        // Shows the dropdown with the options
+        .fudge-dropdown {
+            display: block;
+        }
+    }
+}

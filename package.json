@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack",
     "start": "webpack serve --env env=serve",
-    "styles": "webpack --env env=styles",
+    "styles": "webpack --env env=styles && node utils.js --clean-styles",
     "bundle": "webpack --env env=bundle",
     "bundle:dev": "webpack --env env=bundle --mode=development",
     "test": "jest",

@@ -161,10 +161,10 @@ iconRemove | FA times | svg string | The icon on the right of a tag to denote th
 - To run online you can copy and link the required assets into the /demo directory
     
         # To copy and link assets in the demo directory ("../dist/fudge.js" -> "./dist/fudge.js")
-        node demo-online.js
+        node utils --demo-online
   
         # To restore links to the dist and src directory  ("./dist/fudge.js" -> "../dist/fudge.js") 
-        node demo-local.js
+        node utils --demo-local
 
 ## Testing
     npm run test

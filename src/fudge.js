@@ -52,12 +52,18 @@ class Fudge {
         maxDropdownHeight: null,
         // Show the target/original element (useful for testing/debugging)
         showTarget: false,
-        // Placeholder text
-        placeholder: '',
         // Disable adding glow to filtered options
         glowDisable: false,
         // Possibly holds the initial values for the options
         options: [],
+        // Displaying the placeholder text
+        placeholder: '',
+        // Override placeholder style if needed
+        placeholderStyle: '',
+        // Override placeholder class if needed
+        placeholderClass: '',
+        // Displaying the placeholder text for the filter input
+        placeholderFilter: 'Filter...'
     };
 
     // Contains the initial options for the dropdown list
@@ -75,8 +81,6 @@ class Fudge {
     targetStyle = '';
     // Classes from the target element
     targetClass = '';
-    // Allow the dropdown to add new values not in the options list
-    add = false;
     // Holds if the dropdown is open
     opened = false;
     // Used for a timeout to prevent multiple opening events
@@ -105,12 +109,7 @@ class Fudge {
     elAddOptions = null;
     // Displaying the new item text/value to add
     elAddOption = null;
-    // Displaying the placeholder text
-    placeholder = null;
-    // Override placeholder style if needed
-    placeholderStyle = '';
-    // Override placeholder class if needed
-    placeholderClass = '';
+
 
     /**
      * Initialize this plugin
@@ -160,7 +159,7 @@ class Fudge {
             <div class="fudge-input-icon">
                 ${icon}
             </div>
-            <input class="fudge-input-el">
+            <input class="fudge-input-el" placeholder="${this.opts.placeholderFilter}">
         </div>
         <div class="fudge-add-option fudge-hidden">
             <div class="fudge-option fudge-adding"><span class="fudge-bold">Add: </span><span class="fudge-add"></span></div>

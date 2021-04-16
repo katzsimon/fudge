@@ -1,0 +1,12 @@
+.fudge.subtleinput {
+    .fudge-input {
+        border:1px solid #666;
+        input {
+            border:0;
+            &:focus {
+                border:0;
+                outline:none;
+            }
+        }
+    }
+}

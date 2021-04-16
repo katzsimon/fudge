@@ -249,12 +249,18 @@ var Fudge = /*#__PURE__*/function () {
       maxDropdownHeight: null,
       // Show the target/original element (useful for testing/debugging)
       showTarget: false,
-      // Placeholder text
-      placeholder: '',
       // Disable adding glow to filtered options
       glowDisable: false,
       // Possibly holds the initial values for the options
-      options: []
+      options: [],
+      // Displaying the placeholder text
+      placeholder: '',
+      // Override placeholder style if needed
+      placeholderStyle: '',
+      // Override placeholder class if needed
+      placeholderClass: '',
+      // Displaying the placeholder text for the filter input
+      placeholderFilter: 'Filter...'
     });
 
     _defineProperty(this, "options", {});
@@ -270,8 +276,6 @@ var Fudge = /*#__PURE__*/function () {
     _defineProperty(this, "targetStyle", '');
 
     _defineProperty(this, "targetClass", '');
-
-    _defineProperty(this, "add", false);
 
     _defineProperty(this, "opened", false);
 
@@ -300,12 +304,6 @@ var Fudge = /*#__PURE__*/function () {
     _defineProperty(this, "elAddOptions", null);
 
     _defineProperty(this, "elAddOption", null);
-
-    _defineProperty(this, "placeholder", null);
-
-    _defineProperty(this, "placeholderStyle", '');
-
-    _defineProperty(this, "placeholderClass", '');
 
     Object.assign(this, _plugin_utils_mixin); // Import generic function
 
@@ -352,7 +350,7 @@ var Fudge = /*#__PURE__*/function () {
       if (fudgeStyles !== '') fudgeStyles = " style=\"".concat(fudgeStyles, "\"");
       var icon = this.opts.iconSearch;
       if (this.opts.add) icon = this.opts.iconAdd;
-      var fudge = this.html("\n<div class=\"fudge ".concat(this.opts.theme, "\" tabindex=\"0\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-haspopup=\"listbox\" ").concat(fudgeStyles, ">\n    <div class=\"fudge-display ").concat(this.targetClass, "\" style=\"").concat(this.targetStyle, "\">\n        <div class=\"fudge-placeholder\" style=\"").concat(this.opts.placeholderStyle, "\" class=\"").concat(this.opts.placeholderClass, "\">\n            ").concat(this.opts.placeholder, "\n        </div>\n        <div class=\"fudge-selected\">\n            &nbsp;\n        </div>\n        <div class=\"fudge-openclose\">").concat(this.opts.iconDropdown, "</div>\n    </div>\n    <div class=\"fudge-dropdown\" role=\"listbox\">\n        <div class=\"fudge-input\">\n            <div class=\"fudge-input-icon\">\n                ").concat(icon, "\n            </div>\n            <input class=\"fudge-input-el\">\n        </div>\n        <div class=\"fudge-add-option fudge-hidden\">\n            <div class=\"fudge-option fudge-adding\"><span class=\"fudge-bold\">Add: </span><span class=\"fudge-add\"></span></div>\n        </div>\n        <div class=\"fudge-no-options fudge-hidden\">\n            <div class=\"fudge-option fudge-bold fudge-no\">").concat(this.opts.msgNoResults, "</div>\n        </div>\n        <div class=\"fudge-options\" ").concat(maxDropdownHeight, ">\n        </div>\n    </div>\n</div>\n"));
+      var fudge = this.html("\n<div class=\"fudge ".concat(this.opts.theme, "\" tabindex=\"0\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-haspopup=\"listbox\" ").concat(fudgeStyles, ">\n    <div class=\"fudge-display ").concat(this.targetClass, "\" style=\"").concat(this.targetStyle, "\">\n        <div class=\"fudge-placeholder\" style=\"").concat(this.opts.placeholderStyle, "\" class=\"").concat(this.opts.placeholderClass, "\">\n            ").concat(this.opts.placeholder, "\n        </div>\n        <div class=\"fudge-selected\">\n            &nbsp;\n        </div>\n        <div class=\"fudge-openclose\">").concat(this.opts.iconDropdown, "</div>\n    </div>\n    <div class=\"fudge-dropdown\" role=\"listbox\">\n        <div class=\"fudge-input\">\n            <div class=\"fudge-input-icon\">\n                ").concat(icon, "\n            </div>\n            <input class=\"fudge-input-el\" placeholder=\"").concat(this.opts.placeholderFilter, "\">\n        </div>\n        <div class=\"fudge-add-option fudge-hidden\">\n            <div class=\"fudge-option fudge-adding\"><span class=\"fudge-bold\">Add: </span><span class=\"fudge-add\"></span></div>\n        </div>\n        <div class=\"fudge-no-options fudge-hidden\">\n            <div class=\"fudge-option fudge-bold fudge-no\">").concat(this.opts.msgNoResults, "</div>\n        </div>\n        <div class=\"fudge-options\" ").concat(maxDropdownHeight, ">\n        </div>\n    </div>\n</div>\n"));
       this.insertAfter(target, fudge);
       this.fudge = fudge;
       this.dropdown = fudge.querySelector('.fudge-dropdown');

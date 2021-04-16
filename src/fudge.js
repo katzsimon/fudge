@@ -131,12 +131,21 @@ class Fudge {
             this.empty(this.opts.placeholder)
             && target.hasAttribute('placeholder')
         ) this.opts.placeholder = target.getAttribute('placeholder');
+
         let maxDropdownHeight = '';
         if (this.opts.maxDropdownHeight !== null) maxDropdownHeight = ` style="max-height:${this.opts.maxDropdownHeight}"`;
+
+        let fudgeStyles = '';
+        let zIndex = '';
+        if (this.opts.zindex!==null) fudgeStyles = fudgeStyles+`z-index:${this.opts.zindex};`;
+
+        if (fudgeStyles!=='') fudgeStyles = ` style="${fudgeStyles}"`;
+
         let icon = this.opts.iconSearch;
         if (this.opts.add) icon = this.opts.iconAdd;
+
         const fudge = this.html(`
-<div class="fudge ${this.opts.theme}" tabindex="0" aria-haspopup="true" aria-expanded="false" aria-haspopup="listbox">
+<div class="fudge ${this.opts.theme}" tabindex="0" aria-haspopup="true" aria-expanded="false" aria-haspopup="listbox" ${fudgeStyles}>
     <div class="fudge-display ${this.targetClass}" style="${this.targetStyle}">
         <div class="fudge-placeholder" style="${this.opts.placeholderStyle}" class="${this.opts.placeholderClass}">
             ${this.opts.placeholder}

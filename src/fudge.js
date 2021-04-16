@@ -63,7 +63,7 @@ class Fudge {
         // Override placeholder class if needed
         placeholderClass: '',
         // Displaying the placeholder text for the filter input
-        placeholderFilter: 'Filter...'
+        placeholderFilter: 'Filter...',
     };
 
     // Contains the initial options for the dropdown list
@@ -110,7 +110,6 @@ class Fudge {
     // Displaying the new item text/value to add
     elAddOption = null;
 
-
     /**
      * Initialize this plugin
      *
@@ -135,10 +134,9 @@ class Fudge {
         if (this.opts.maxDropdownHeight !== null) maxDropdownHeight = ` style="max-height:${this.opts.maxDropdownHeight}"`;
 
         let fudgeStyles = '';
-        let zIndex = '';
-        if (this.opts.zindex!==null) fudgeStyles = fudgeStyles+`z-index:${this.opts.zindex};`;
+        if (this.opts.zindex !== null) fudgeStyles = `${fudgeStyles}z-index:${this.opts.zindex};`;
 
-        if (fudgeStyles!=='') fudgeStyles = ` style="${fudgeStyles}"`;
+        if (fudgeStyles !== '') fudgeStyles = ` style="${fudgeStyles}"`;
 
         let icon = this.opts.iconSearch;
         if (this.opts.add) icon = this.opts.iconAdd;

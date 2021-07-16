@@ -28,8 +28,8 @@ class Fudge {
         // Separate the value and text of an option text1::Text 1,text2::Text 2
         glueOption: '::',
         // Add the glue character to the end of the tag string
-        // true = tag1,tag2 || false = tag1,tag2
-        glueEnd: true,
+        // true = tag1,tag2, || false = tag1,tag2
+        glueEnd: false,
         // Allow adding new options to the dropdown list
         add: false,
         // Icon on the right to show the dropdown (Font Awesome: angle-down)
@@ -213,6 +213,8 @@ class Fudge {
             if (key === 'Tab') {
                 e.preventDefault();
                 this.close();
+            } else if (key === 'Enter') {
+                e.preventDefault();
             }
         });
         this.input.addEventListener('keyup', (e) => {
@@ -234,6 +236,8 @@ class Fudge {
         this.elAddOptions.addEventListener('click', () => {
             this.select();
         });
+        // Access the Fudge Instance from the target
+        this.target.fudge = this;
     }
 
     /**
@@ -300,6 +304,7 @@ class Fudge {
         } else if (key === 'ArrowUp') {
             this.highlight('prev');
         } else if (key === 'Enter') {
+            e.preventDefault();
             this.select();
         } else if (key === 'Escape') {
             this.close();
@@ -363,11 +368,17 @@ class Fudge {
             && this.empty(this.opts.options)
         ) {
             // Get options from the target selects option elements
-            const selectOptions = this.target.querySelectorAll('option');
+            const selectOptions = this.target.querySelectorAll('option, optgroup');
             selectOptions.forEach((anOption) => {
-                value = anOption.value;
-                text = anOption.innerHTML;
-                this.options.push({ value, text });
+                if (anOption.nodeName === 'OPTGROUP') {
+                    value = 'optgroup';
+                    text = anOption.getAttribute('label');
+                    this.options.push({ value, text });
+                } else if (anOption.nodeName === 'OPTION') {
+                    value = anOption.value;
+                    text = anOption.innerHTML;
+                    this.options.push({ value, text });
+                }
             });
         }
     }
@@ -409,6 +420,8 @@ class Fudge {
         // If no text specified use value
         if (this.empty(text)) text = value;
         if (text === '') text = '&nbsp;';
+
+        if (value === 'optgroup') return `<div class="fudge-optgroup">${text}</div>`;
 
         return `<div class="fudge-option" data-value="${value}" data-text="${text}" role="option">${text}</div>`;
     }
@@ -806,6 +819,7 @@ class Fudge {
                     this.target.value = this.value;
                     this.triggerEvent(this.target, 'updated');
                     this.triggerEvent(this.target, 'input');
+                    this.triggerEvent(this.target, 'change');
                 }
             }
         }

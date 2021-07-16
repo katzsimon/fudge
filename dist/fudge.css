@@ -13,9 +13,14 @@ CSS Variables
     --fudge-tag-text: #fff;
     --fudge-highlight-background: #e9ecef;
     --fudge-highlight-text: #fff;
-    --fudge-glow-background: ff0;
+    --fudge-glow-background: #ff0;
     --fudge-glow-text: #000;
+    --fudge-optgroup-background: #000;
+    --fudge-optgroup-text: #fff;
     --fudge-gray: #ced4da;
+    --fudge-shadow-offset: 4px;
+    --fudge-shadow-size: 8px;
+    --fudge-shadow-color: rgba(0, 0, 0, 0.25);
 }
  */
 .fudge {
@@ -99,7 +104,11 @@ CSS Variables
     z-index: 10;
     position: absolute;
     left: 0;
-    display: none; }
+    display: none;
+    -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+    -webkit-box-shadow: 0 var(--fudge-shadow-offset, 4px) var(--fudge-shadow-size, 8px) var(--fudge-shadow-color, rgba(0, 0, 0, 0.25));
+            box-shadow: 0 var(--fudge-shadow-offset, 4px) var(--fudge-shadow-size, 8px) var(--fudge-shadow-color, rgba(0, 0, 0, 0.25)); }
   .fudge .fudge-input {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -136,6 +145,22 @@ CSS Variables
   .fudge .fudge-options {
     max-height: 200px;
     overflow: auto; }
+  .fudge .fudge-optgroup {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    padding: 4px 8px;
+    cursor: pointer;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+    color: #fff;
+    color: var(--fudge-optgroup-text, #fff);
+    background-color: #6c757d;
+    background-color: var(--fudge-optgroup-background, #6c757d);
+    font-weight: bold; }
   .fudge .fudge-option {
     display: -webkit-box;
     display: -ms-flexbox;

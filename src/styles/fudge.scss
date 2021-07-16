@@ -13,7 +13,12 @@ $highlightBackground: #e9ecef; // CSS Variable: --fudge-highlight-background
 $highlightText: #000; // CSS Variable: --fudge-highlight-text
 $glowBackground: #ff0; // CSS Variable: --fudge-glow-background
 $glowText: #000; // CSS Variable: --fudge-glow-text
+$optgroupBackground: #6c757d; // CSS Variable: --fudge-optgroup-background
+$optgroupText: #fff; // CSS Variable: --fudge-optgroup-text
 $gray: #ced4da; // CSS Variable: --fudge-gray
+$shadowOffset: 4px;
+$shadowSize: 8px;
+$shadowColor: rgba(0, 0, 0, 0.25);
 
 /*
 CSS Variables
@@ -27,9 +32,14 @@ CSS Variables
     --fudge-tag-text: #fff;
     --fudge-highlight-background: #e9ecef;
     --fudge-highlight-text: #fff;
-    --fudge-glow-background: ff0;
+    --fudge-glow-background: #ff0;
     --fudge-glow-text: #000;
+    --fudge-optgroup-background: #000;
+    --fudge-optgroup-text: #fff;
     --fudge-gray: #ced4da;
+    --fudge-shadow-offset: 4px;
+    --fudge-shadow-size: 8px;
+    --fudge-shadow-color: rgba(0, 0, 0, 0.25);
 }
  */
 
@@ -104,6 +114,7 @@ CSS Variables
         position: absolute;
         left: 0;
         display: none;
+        box-shadow: 0 var(--fudge-shadow-offset, $shadowOffset) var(--fudge-shadow-size, $shadowSize) var(--fudge-shadow-color, $shadowColor);
     }
 
     .fudge-input {
@@ -137,6 +148,18 @@ CSS Variables
         // The element containing the options
         max-height: 200px;
         overflow: auto;
+    }
+
+    .fudge-optgroup {
+        // An for an optgroup
+        display: flex;
+        width: 100%;
+        padding: 4px 8px;
+        cursor: pointer;
+        user-select: none;
+        color: var(--fudge-optgroup-text, $optgroupText);
+        background-color: var(--fudge-optgroup-background, $optgroupBackground);
+        font-weight:bold;
     }
 
     .fudge-option {

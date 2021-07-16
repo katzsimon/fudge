@@ -229,8 +229,8 @@ var Fudge = /*#__PURE__*/function () {
       // Separate the value and text of an option text1::Text 1,text2::Text 2
       glueOption: '::',
       // Add the glue character to the end of the tag string
-      // true = tag1,tag2 || false = tag1,tag2
-      glueEnd: true,
+      // true = tag1,tag2, || false = tag1,tag2
+      glueEnd: false,
       // Allow adding new options to the dropdown list
       add: false,
       // Icon on the right to show the dropdown (Font Awesome: angle-down)
@@ -345,8 +345,7 @@ var Fudge = /*#__PURE__*/function () {
       var maxDropdownHeight = '';
       if (this.opts.maxDropdownHeight !== null) maxDropdownHeight = " style=\"max-height:".concat(this.opts.maxDropdownHeight, "\"");
       var fudgeStyles = '';
-      var zIndex = '';
-      if (this.opts.zindex !== null) fudgeStyles = fudgeStyles + "z-index:".concat(this.opts.zindex, ";");
+      if (this.opts.zindex !== null) fudgeStyles = "".concat(fudgeStyles, "z-index:").concat(this.opts.zindex, ";");
       if (fudgeStyles !== '') fudgeStyles = " style=\"".concat(fudgeStyles, "\"");
       var icon = this.opts.iconSearch;
       if (this.opts.add) icon = this.opts.iconAdd;
@@ -393,6 +392,8 @@ var Fudge = /*#__PURE__*/function () {
           e.preventDefault();
 
           _this.close();
+        } else if (key === 'Enter') {
+          e.preventDefault();
         }
       });
       this.input.addEventListener('keyup', function (e) {
@@ -413,7 +414,9 @@ var Fudge = /*#__PURE__*/function () {
 
       this.elAddOptions.addEventListener('click', function () {
         _this.select();
-      });
+      }); // Access the Fudge Instance from the target
+
+      this.target.fudge = this;
     }
     /**
      * Open the dropdown menu
@@ -494,6 +497,7 @@ var Fudge = /*#__PURE__*/function () {
       } else if (key === 'ArrowUp') {
         this.highlight('prev');
       } else if (key === 'Enter') {
+        e.preventDefault();
         this.select();
       } else if (key === 'Escape') {
         this.close();
@@ -583,15 +587,25 @@ var Fudge = /*#__PURE__*/function () {
         }
       } else if (this.target.nodeName === 'SELECT' && this.empty(this.opts.options)) {
         // Get options from the target selects option elements
-        var selectOptions = this.target.querySelectorAll('option');
+        var selectOptions = this.target.querySelectorAll('option, optgroup');
         selectOptions.forEach(function (anOption) {
-          value = anOption.value;
-          text = anOption.innerHTML;
+          if (anOption.nodeName === 'OPTGROUP') {
+            value = 'optgroup';
+            text = anOption.getAttribute('label');
 
-          _this3.options.push({
-            value: value,
-            text: text
-          });
+            _this3.options.push({
+              value: value,
+              text: text
+            });
+          } else if (anOption.nodeName === 'OPTION') {
+            value = anOption.value;
+            text = anOption.innerHTML;
+
+            _this3.options.push({
+              value: value,
+              text: text
+            });
+          }
         });
       }
     }
@@ -636,6 +650,7 @@ var Fudge = /*#__PURE__*/function () {
       // If no text specified use value
       if (this.empty(text)) text = value;
       if (text === '') text = '&nbsp;';
+      if (value === 'optgroup') return "<div class=\"fudge-optgroup\">".concat(text, "</div>");
       return "<div class=\"fudge-option\" data-value=\"".concat(value, "\" data-text=\"").concat(text, "\" role=\"option\">").concat(text, "</div>");
     }
     /**
@@ -1041,6 +1056,7 @@ var Fudge = /*#__PURE__*/function () {
             this.target.value = this.value;
             this.triggerEvent(this.target, 'updated');
             this.triggerEvent(this.target, 'input');
+            this.triggerEvent(this.target, 'change');
           }
         }
       } // Show the placeholder text if needed

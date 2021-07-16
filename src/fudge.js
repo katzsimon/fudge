@@ -799,7 +799,12 @@ class Fudge {
                 this.input.value = '';
                 this.filter();
                 this.input.focus();
-                if (this.addedTags === this.opts.taglimit) this.close(true);
+                if (
+                    parseInt(this.addedTags) === parseInt(this.opts.tagLimit)
+                    && this.opts.closeOnTagLimit
+                ) {
+                    this.close(true);
+                }
             } else {
                 // Select the option
                 this.selected.innerHTML = option.getAttribute('data-text');
